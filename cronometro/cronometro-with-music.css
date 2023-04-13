@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    color: whitesmoke;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    background-color: rgb(7, 103, 103);
+    color: whitesmoke;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 20px;
+}
