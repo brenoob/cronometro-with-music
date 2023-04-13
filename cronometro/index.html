@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro javascript</title>
+    <style>
+        body{
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        .container {
+            text-align: center;
+        }
+        
+        button {
+            background-color: rgb(7, 103, 103);
+            color: whitesmoke;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="soundDurante" src="./musica-para-estudar"></audio><!-- coloque seu arquivo de musica aqui de durante o cronometro -->
+    <audio id="sound" src="./Carsie Blanton - Smoke Alarm.mp3" style="display:none;"></audio>
+
+    <div class="container">
+        <h1>Minutos:</h1>
+        <select name="minutos" id="minutos"></select>
+
+        <h2>Segundos:</h2>
+        <select name="segundos" id="segundos"></select>
+        <br><br>
+
+        <button id="comecar">começar</button>
+
+        <div id="display">
+            <h3></h3>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display')
+        let minutos = document.getElementById('minutos')
+        let segundos = document.getElementById('segundos')
+
+        let comecar = document.getElementById('comecar')
+
+        let cronometroSeg;
+        
+        let minutosAtual;
+        let segundosAtual;
+
+        let interval;
+
+        for(var i = 0; i<= 60; i++){
+            minutos.innerHTML+='<option value="'+i+'">'+i+'</option>'
+        }
+        for(var i = 1; i<= 60; i++){
+            segundos.innerHTML+='<option value="'+i+'">'+i+'</option>'
+        }
+
+        comecar.addEventListener('click', function(){
+            document.getElementById('soundDurante').play()
+            minutosAtual = minutos.value
+            segundosAtual = segundos.value
+
+            display.childNodes[1].innerHTML = minutosAtual + ':'+segundosAtual
+            
+            interval = setInterval(() => {
+                if(minutosAtual && segundosAtual == 0){
+                        alert('coloque um tempo valido')
+                    }
+                segundosAtual--;
+                if(segundosAtual <= 0) {
+                    if(minutosAtual > 0) {
+                        minutosAtual--;
+                        segundosAtual = 59;
+                    }else{
+                        document.getElementById('soundDurante').load();
+                        document.getElementById('sound').play();
+                        alert('acabou!!')
+                        document.getElementById('sound').load()
+                        clearInterval(interval);
+                    }
+                }
+                display.childNodes[1].innerHTML = minutosAtual + ":"+segundosAtual
+            }, 1000);
+        })
+    </script>
+</body>
+</html>
