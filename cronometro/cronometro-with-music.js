@@ -14,7 +14,7 @@ let display = document.getElementById('display')
         for(let i = 0; i<= 60; i++){
             minutos.innerHTML+='<option value="'+i+'">'+i+'</option>'
         }
-        for(let i = 1; i<= 60; i++){
+        for(let i = 0; i<= 60; i++){
             segundos.innerHTML+='<option value="'+i+'">'+i+'</option>'
         }
 
@@ -26,7 +26,7 @@ let display = document.getElementById('display')
             display.childNodes[1].innerHTML = minutosAtual + ':'+segundosAtual
             
             interval = setInterval(() => {
-                if(minutosAtual && segundosAtual == 0){
+                if(minutosAtual <= 0 && segundosAtual <= 0){
                         alert('coloque um tempo valido')
                     }
                 segundosAtual--;
