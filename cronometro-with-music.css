@@ -27,15 +27,41 @@ button {
     padding: 5px 20px;
 }
 h3 {
-    color: #ff5555;
+    color: #f8f8f2;
     font-size: 48pt;
     text-align: center;
-    background-color: #50fa7b;
+    background-color: #6273a4;
     width: 500px;
     margin: 0 auto;
     margin-top: 5vh;
     border: 1px solid #44475a;
     border-radius: 7px;
+}
+body > footer:nth-child(4) > span:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Elemento | http://127.0.0.1:5500/index.html */
+
+body > footer:nth-child(4) > span:nth-child(1) > strong:nth-child(1) > img:nth-child(1) {
+    border-radius: 50%;
+    width: 16px;
+  }
+
+#minutos, #segundos {
+    color: #6272A4;
+    background-color: #f8f8f2;
+    border-radius: 7px;
+    width: clamp(40px, 10vw, 100px);
+    text-align: center;
+}
+#comecar:hover{
+    background: #6273a4b5;
+}
+#comecar:active{
+    background: #6273a4;
 }
 
 @media (max-width: 530px) {
