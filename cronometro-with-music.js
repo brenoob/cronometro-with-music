@@ -22,7 +22,7 @@ let display = document.getElementById('display')
             minutosAtual = minutos.value
             segundosAtual = segundos.value
 
-            display.childNodes[1].innerHTML = `0${minutosAtual}:0${segundosAtual}`
+            display.childNodes[1].innerHTML = `0${minutosAtual}:${segundosAtual}`
             
             interval = setInterval(() => {
                 if(minutosAtual <= 0 && segundosAtual <= 0){
