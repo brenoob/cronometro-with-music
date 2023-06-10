@@ -4,8 +4,6 @@ let display = document.getElementById('display')
 
         let comecar = document.getElementById('comecar')
 
-        let cronometroSeg;
-        
         let minutosAtual;
         let segundosAtual;
 
@@ -19,15 +17,17 @@ let display = document.getElementById('display')
         }
 
         comecar.addEventListener('click', function(){
+            clearInterval(interval)
             document.getElementById('soundDurante').play()
             minutosAtual = minutos.value
             segundosAtual = segundos.value
 
-            display.childNodes[1].innerHTML = minutosAtual + ':'+segundosAtual
+            display.childNodes[1].innerHTML = `0${minutosAtual}:0${segundosAtual}`
             
             interval = setInterval(() => {
                 if(minutosAtual <= 0 && segundosAtual <= 0){
                         alert('coloque um tempo valido')
+                        clearInterval(interval)
                     }
                 segundosAtual--;
                 if(segundosAtual <= 0) {
@@ -42,6 +42,6 @@ let display = document.getElementById('display')
                         clearInterval(interval);
                     }
                 }
-                display.childNodes[1].innerHTML = minutosAtual + ":"+segundosAtual
+                display.childNodes[1].innerHTML = minutosAtual.toString().padStart(2, '0') + ":"+segundosAtual.toString().padStart(2, '0');
             }, 1000);
         })
